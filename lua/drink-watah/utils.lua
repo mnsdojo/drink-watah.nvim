@@ -35,5 +35,20 @@ function M.show_notification(msg, level)
 		})
 	end
 end
+function M.format_time(minutes)
+	if minutes < 60 then
+		return string.format("%d minutes", minutes)
+	else
+		local hours = math.floor(minutes / 60)
+		local mins = minutes % 60
+		return string.format(
+			"%d hour%s%s%s",
+			hours,
+			hours > 1 and "s" or "",
+			mins > 0 and " and " or "",
+			mins > 0 and string.format("%d minutes", mins) or ""
+		)
+	end
+end
 
 return M
